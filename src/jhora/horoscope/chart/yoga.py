@@ -7240,9 +7240,11 @@ def _yukthi_samanwithavagmi_yoga_155_calculation(chart_1d=None, planet_positions
     # 5. Check Dasavarga Vaisheshikamsa Requirements
     # Parvatamsa (Paaraavataamsa) = 6
     # Simhasanamsa (Simhaasanaamsa) = 5
-    l2_score = v_scores[l2]
-    jup_score = v_scores[const.JUPITER_ID]
-    ven_score = v_scores[const.VENUS_ID]
+    # Entries are [count, chart_names, weighted_score]; use the varga count.
+    # Infinity Online Solutions fork fix, 2026-11-12.
+    l2_score = v_scores[l2][0]
+    jup_score = v_scores[const.JUPITER_ID][0]
+    ven_score = v_scores[const.VENUS_ID][0]
 
     has_parvatamsa = (l2_score >= 6)
     has_simhasanamsa = (jup_score >= 5 or ven_score >= 5)
